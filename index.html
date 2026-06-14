@@ -4,18 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ななめみち・テック | 公式サイト</title>
-    <!-- Tailwind CSS CDN (これ1行でモダンなスタイリングが可能になります) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Googleカレンダーをダークモード風に馴染ませるための魔法のフィルター */
+        /* Googleカレンダーを完全にダークモードに溶け込ませる魔法のフィルター */
         .dark-calendar {
-            filter: grayscale(1) invert(0.9) opacity(0.85) contrast(1.2);
+            filter: grayscale(1) invert(0.92) opacity(0.85) contrast(1.15);
         }
     </style>
 </head>
 <body class="bg-[#0f1115] text-slate-200 font-sans antialiased min-h-screen flex flex-col selection:bg-slate-700 selection:text-white">
 
-    <!-- 1. レイアウト / ナビゲーション (SPA風に追従するヘッダー) -->
     <header class="border-b border-slate-800 backdrop-blur-md sticky top-0 z-50 bg-[#0f1115]/80">
       <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <a href="#" class="font-bold tracking-wider text-base md:text-lg text-white hover:opacity-80 transition-opacity">
@@ -30,7 +28,6 @@
     </header>
 
     <main class="flex-grow">
-        <!-- ヒーローセクション -->
         <section class="max-w-5xl mx-auto px-6 py-24 text-center">
             <span class="text-xs font-bold tracking-widest text-indigo-400 uppercase bg-indigo-500/10 px-3 py-1 rounded-full">Dual-Blade Strategy</span>
             <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white mt-4 mb-6 leading-tight">
@@ -41,7 +38,6 @@
             </p>
         </section>
 
-        <!-- 2. できること (技術サンプル・実績を兼ねたカード) -->
         <section id="services" class="max-w-4xl mx-auto px-6 py-16 border-t border-slate-900">
             <h2 class="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-10 text-center">できること（技術サンプル）</h2>
             <div class="grid md:grid-cols-3 gap-6">
@@ -63,15 +59,13 @@
             </div>
         </section>
 
-        <!-- 3. カレンダーコンポーネント (レスポンシブ対応) -->
         <section id="schedule" class="max-w-4xl mx-auto px-6 py-16 border-t border-slate-900 text-center">
             <h2 class="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-2">現在の空き状況</h2>
             <p class="text-xs text-slate-400 mb-8">お打ち合わせが可能なスケジュール（参照専用）</p>
             <div class="max-w-3xl mx-auto">
-                <div class="relative w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900 shadow-2xl" style="padding-top: 60%;">
-                    <!-- サンプルとして日本の祝日カレンダーを入れています。ご自身のURLに差し替え可能です -->
+                <div class="relative w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900 shadow-2xl" style="padding-top: 65%;">
                     <iframe 
-                        src="https://calendar.google.com/calendar/embed?src=94b7c6ff5c201830ba0870eb7da3f4bfc145d71059408a3bb927b2a082217fc5%40group.calendar.google.com&ctz=Asia%2FTokyo" 
+                        src="https://calendar.google.com/calendar/embed?src=tolan5gm%40gmail.com&ctz=Asia%2FTokyo&mode=MONTH" 
                         class="absolute top-0 left-0 w-full h-full dark-calendar" 
                         style="border: 0;" 
                         scrolling="no"
@@ -80,12 +74,10 @@
             </div>
         </section>
 
-        <!-- 4. 仮予約フォームコンポーネント (SPA風に動く非同期対応) -->
         <section id="contact" class="max-w-4xl mx-auto px-6 py-16 border-t border-slate-900 text-center mb-12">
             <h2 class="text-xs font-semibold tracking-widest text-slate-500 uppercase mb-2">ご相談・仮予約</h2>
             <p class="text-xs text-slate-400 mb-8">必要事項を入力の上、送信ボタンを押してください</p>
             
-            <!-- SSForm等のURLへ差し替えるだけで動くフォーム構造 -->
             <form id="reservationForm" action="https://ssform.xyz/example-endpoint" method="POST" class="space-y-4 bg-slate-900/20 p-6 md:p-8 rounded-xl border border-slate-800/80 max-w-xl mx-auto text-left transition-all duration-300">
                 <div>
                     <label class="block text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">お名前</label>
@@ -119,32 +111,26 @@
         </div>
     </footer>
 
-    <!-- 5. SPAっぽく見せるためのJavaScript（非同期送信とアニメーション） -->
     <script>
         const form = document.getElementById('reservationForm');
         
         form.addEventListener('submit', async (e) => {
-            // 本来のページ遷移（画面が真っ白になってリロードされる動き）をストップ！これがSPA化の肝です
             e.preventDefault();
             
             const submitButton = form.querySelector('button[type="submit"]');
             submitButton.disabled = true;
             submitButton.innerHTML = '送信中...';
 
-            // フォームのデータを集める
             const formData = new FormData(form);
             const actionUrl = form.getAttribute('action');
 
             try {
-                // バックグラウンドで非同期にデータをPOST送信（fetch API）
-                // ※サンプルURLなので実際にはエラーになりますが、成功時のSPA的な挙動をシミュレートします
-                const response = await fetch(actionUrl, {
+                await fetch(actionUrl, {
                     method: 'POST',
                     body: formData,
-                    mode: 'no-cors' // 外部サービス連携用のおまじない
+                    mode: 'no-cors'
                 });
 
-                // SPA風の演出：画面をリロードせず、フォームの部分だけを美しい完了メッセージに書き換える
                 form.style.opacity = '0';
                 setTimeout(() => {
                     form.innerHTML = `
@@ -160,7 +146,7 @@
             } catch (error) {
                 submitButton.disabled = false;
                 submitButton.innerHTML = '送信する（仮予約）';
-                alert('送信に失敗しました。時間をおいて再度お試しください。');
+                alert('送信に失敗しました。');
             }
         });
     </script>
