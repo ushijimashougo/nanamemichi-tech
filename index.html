@@ -10,8 +10,13 @@
         .iframe-container {
             position: relative;
             width: 100%;
-            padding-top: 70%; /* スマホ・PC双方でバランスの良い高さ */
+            padding-top: 100%; /* スマホ向けに高さを確保（正方形に近い比率） */
             overflow: hidden;
+        }
+        @media (min-width: 768px) {
+            .iframe-container {
+                padding-top: 70%; /* PC・タブレット向けは横長に */
+            }
         }
         .iframe-container iframe {
             position: absolute;
@@ -26,56 +31,59 @@
 <body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-slate-700 selection:text-white">
 
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-      <div class="max-w-5xl mx-auto px-6 h-20 flex items-center justify-between">
-        <a href="#" class="font-bold text-lg md:text-xl text-slate-900 tracking-wider hover:opacity-80 transition-opacity">
-          ななめみち・テック <span class="text-xs font-normal text-slate-500 block md:inline md:ml-2">| ビジネスのためのWeb制作</span>
+      <!-- スマホでは縦並び（flex-col）、PCでは横並び（md:flex-row）に切り替え -->
+      <div class="max-w-5xl mx-auto px-4 md:px-6 py-3 md:py-0 md:h-20 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-0">
+        <a href="#" class="font-bold text-base md:text-xl text-slate-900 tracking-wider hover:opacity-80 transition-opacity text-center md:text-left w-full md:w-auto">
+          ななめみち・テック 
+          <span class="text-[10px] md:text-xs font-normal text-slate-500 block md:inline md:ml-2 mt-0.5 md:mt-0">| ビジネスのためのWeb制作</span>
         </a>
-        <nav class="flex gap-6 text-sm md:text-base font-semibold text-slate-600">
-          <a href="#features" class="hover:text-slate-950 transition-colors">特徴</a>
-          <a href="#schedule" class="hover:text-slate-950 transition-colors">空き状況</a>
-          <a href="#contact" class="hover:text-slate-950 transition-colors">お問い合わせ</a>
+        <nav class="flex gap-5 md:gap-6 text-xs md:text-base font-semibold text-slate-600">
+          <a href="#features" class="hover:text-slate-950 transition-colors whitespace-nowrap">特徴</a>
+          <a href="#schedule" class="hover:text-slate-950 transition-colors whitespace-nowrap">空き状況</a>
+          <a href="#contact" class="hover:text-slate-950 transition-colors whitespace-nowrap">お問い合わせ</a>
         </nav>
       </div>
     </header>
 
     <main class="flex-grow">
-        <section class="max-w-5xl mx-auto px-6 py-20 md:py-28 text-center">
-            <span class="text-xs font-bold tracking-widest text-slate-500 bg-slate-200/60 px-4 py-1.5 rounded-full uppercase">Simple & Reliable</span>
-            <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 mt-6 mb-6 leading-tight">
+        <section class="max-w-5xl mx-auto px-6 py-16 md:py-28 text-center">
+            <span class="text-[10px] md:text-xs font-bold tracking-widest text-slate-500 bg-slate-200/60 px-3 md:px-4 py-1.5 rounded-full uppercase">Simple & Reliable</span>
+            <h1 class="text-2xl md:text-5xl font-extrabold tracking-tight text-slate-900 mt-6 mb-6 leading-tight">
                 日々の管理も、設備投資もいらない。<br class="hidden md:block"/>
                 ビジネスに集中するためのホームページ。
             </h1>
-            <p class="text-slate-600 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
+            <p class="text-slate-600 max-w-2xl mx-auto text-sm md:text-lg leading-relaxed">
                 「ななめみち・テック」は、Web周りの煩雑な仕組みや運用保守をすべて引き受け、お客様のビジネスに親身に寄り添う制作パートナーです。面倒なメンテナンスを必要としない、安全で頑丈なサイトを迅速に構築します。
             </p>
         </section>
 
-        <section id="features" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-200">
-            <h2 class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-12 text-center">ななめみち・テックの特徴</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-6 font-bold text-base">01</div>
-                    <h3 class="text-slate-900 font-bold mb-3 text-lg">無駄な設備投資・維持費は不要</h3>
-                    <p class="text-base text-slate-600 leading-relaxed">毎月発生する高額な管理費や、大がかりなシステム投資は必要ありません。コストを最小限に抑え、まずは手軽に確実な足がかりを作ることができます。</p>
+        <section id="features" class="max-w-5xl mx-auto px-6 py-12 md:py-16 border-t border-slate-200">
+            <h2 class="text-xs font-bold tracking-widest text-slate-400 uppercase mb-8 md:mb-12 text-center">ななめみち・テックの特徴</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-4 md:mb-6 font-bold text-base">01</div>
+                    <h3 class="text-slate-900 font-bold mb-2 md:mb-3 text-base md:text-lg">無駄な設備投資・維持費は不要</h3>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed">毎月発生する高額な管理費や、大がかりなシステム投資は必要ありません。コストを最小限に抑え、まずは手軽に確実な足がかりを作ることができます。</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-6 font-bold text-base">02</div>
-                    <h3 class="text-slate-900 font-bold mb-3 text-lg">面倒なメンテナンスからの解放</h3>
-                    <p class="text-base text-slate-600 leading-relaxed">「作った後の更新作業やセキュリティ対策が不安」という心配は無用です。複雑な管理を必要とせず、長期にわたって安定して動き続ける仕組みを提供します。</p>
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-4 md:mb-6 font-bold text-base">02</div>
+                    <h3 class="text-slate-900 font-bold mb-2 md:mb-3 text-base md:text-lg">面倒なメンテナンスからの解放</h3>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed">「作った後の更新作業やセキュリティ対策が不安」という心配は無用です。複雑な管理を必要とせず、長期にわたって安定して動き続ける仕組みを提供します。</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
-                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-6 font-bold text-base">03</div>
-                    <h3 class="text-slate-900 font-bold mb-3 text-lg">迅速な立ち上げと軽快な動作</h3>
-                    <p class="text-base text-slate-600 leading-relaxed">無駄を削ぎ落としたシンプルな設計により、ご相談から公開までスピーディーに対応。スマートフォンからでもストレスなく、一瞬で開く快適なサイトを実現します。</p>
+                <div class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-800 mb-4 md:mb-6 font-bold text-base">03</div>
+                    <h3 class="text-slate-900 font-bold mb-2 md:mb-3 text-base md:text-lg">迅速な立ち上げと軽快な動作</h3>
+                    <p class="text-sm md:text-base text-slate-600 leading-relaxed">無駄を削ぎ落としたシンプルな設計により、ご相談から公開までスピーディーに対応。スマートフォンからでもストレスなく、一瞬で開く快適なサイトを実現します。</p>
                 </div>
             </div>
         </section>
 
-        <section id="schedule" class="max-w-4xl mx-auto px-6 py-16 border-t border-slate-200 text-center">
-            <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-3">現在の空き状況</h2>
-            <p class="text-base text-slate-600 mb-8 max-w-xl mx-auto">お打ち合わせやご相談が可能なスケジュールです。カレンダーをご確認の上、ご都合の良い日時をお知らせください。</p>
-            <div class="max-w-3xl mx-auto bg-white p-3 rounded-2xl border border-slate-200 shadow-sm">
+        <section id="schedule" class="max-w-4xl mx-auto px-6 py-12 md:py-16 border-t border-slate-200 text-center">
+            <h2 class="text-lg md:text-2xl font-bold text-slate-900 mb-3">現在の空き状況</h2>
+            <p class="text-sm md:text-base text-slate-600 mb-6 md:mb-8 max-w-xl mx-auto">お打ち合わせやご相談が可能なスケジュールです。カレンダーをご確認の上、ご都合の良い日時をお知らせください。</p>
+            <div class="max-w-3xl mx-auto bg-white p-2 md:p-3 rounded-2xl border border-slate-200 shadow-sm">
                 <div class="iframe-container">
+                    <!-- Googleカレンダー：スマホで月表示が狭い場合は、パラメータを mode=AGENDA に変更するのも有効です -->
                     <iframe 
                         src="https://calendar.google.com/calendar/embed?src=tolan5gm%40gmail.com&ctz=Asia%2FTokyo&mode=MONTH" 
                         scrolling="no"
@@ -84,9 +92,9 @@
             </div>
         </section>
 
-        <section id="contact" class="max-w-4xl mx-auto px-6 py-16 border-t border-slate-200 text-center mb-12">
-            <h2 class="text-xl md:text-2xl font-bold text-slate-900 mb-3">ご相談・お問い合わせ</h2>
-            <p class="text-base text-slate-600 mb-8 max-w-xl mx-auto">ホームページ作成に関するご質問やご依頼は、下記のフォームよりお気軽にお送りください。内容を確認後、折り返しご連絡いたします。</p>
+        <section id="contact" class="max-w-4xl mx-auto px-6 py-12 md:py-16 border-t border-slate-200 text-center mb-8 md:mb-12">
+            <h2 class="text-lg md:text-2xl font-bold text-slate-900 mb-3">ご相談・お問い合わせ</h2>
+            <p class="text-sm md:text-base text-slate-600 mb-6 md:mb-8 max-w-xl mx-auto">ホームページ作成に関するご質問やご依頼は、下記のフォームよりお気軽にお送りください。内容を確認後、折り返しご連絡いたします。</p>
             
             <div class="max-w-2xl mx-auto bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                 <iframe 
@@ -102,10 +110,10 @@
         </section>
     </main>
 
-    <footer class="bg-slate-900 text-slate-400 text-sm py-12 border-t border-slate-800">
+    <footer class="bg-slate-900 text-slate-400 text-sm py-8 md:py-12 border-t border-slate-800">
         <div class="max-w-5xl mx-auto px-6 text-center">
-            <div class="font-bold text-white text-base">ななめみち・テック</div>
-            <div class="text-xs text-slate-500 mt-1">© 2026 ななめみち・テック All Rights Reserved.</div>
+            <div class="font-bold text-white text-sm md:text-base">ななめみち・テック</div>
+            <div class="text-[10px] md:text-xs text-slate-500 mt-2">© 2026 ななめみち・テック All Rights Reserved.</div>
         </div>
     </footer>
 </body>
