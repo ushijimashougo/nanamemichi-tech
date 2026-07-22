@@ -1,2 +1,9 @@
 # Local VS Code workspace settings
 CreateWebPage.code-workspace
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
