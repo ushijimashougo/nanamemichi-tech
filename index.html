@@ -5,7 +5,368 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ななめみち・テック | ホームページ作成・ITサポート</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
+    <style><!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ななめみち・テック｜小さな事業のための静的Webサイト制作</title>
+  <meta name="description" content="熊本市のななめみち・テック。小規模店舗・個人事業主・ITが苦手な方へ、50,000円（税込）から、最短当日公開のシンプルな静的Webサイトを制作します。">
+  <meta name="theme-color" content="#f8fafc">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="ななめみち・テック｜小さな事業のための静的Webサイト制作">
+  <meta property="og:description" content="必要な情報を、速く、堅実に。50,000円（税込）から始める静的Webサイト制作。">
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5c6679;
+      --line: #dfe4ec;
+      --paper: #ffffff;
+      --wash: #f5f7fa;
+      --accent: #185f55;
+      --accent-dark: #10463f;
+      --accent-soft: #e7f2ef;
+      --radius: 22px;
+      --shadow: 0 18px 55px rgba(23, 32, 51, .08);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; }
+    section { scroll-margin-top: 90px; }
+    .container { width: min(1080px, calc(100% - 40px)); margin-inline: auto; }
+    .narrow { width: min(780px, 100%); margin-inline: auto; }
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { line-height: 1.35; letter-spacing: -.02em; }
+    h2 { margin-bottom: 18px; font-size: clamp(1.8rem, 4vw, 2.7rem); }
+    h3 { margin-bottom: 10px; font-size: 1.15rem; }
+    .lead { color: var(--muted); font-size: 1.05rem; }
+    .note { color: var(--muted); font-size: .85rem; }
+
+    .site-header {
+      position: sticky;
+      z-index: 20;
+      top: 0;
+      border-bottom: 1px solid rgba(223, 228, 236, .9);
+      background: rgba(255, 255, 255, .94);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { text-decoration: none; font-weight: 900; letter-spacing: .04em; white-space: nowrap; }
+    .brand small { color: var(--muted); font-size: .7rem; font-weight: 500; letter-spacing: .02em; }
+    nav { display: flex; align-items: center; gap: 22px; font-size: .88rem; font-weight: 700; }
+    nav a { text-decoration: none; }
+    nav a:hover { color: var(--accent); }
+    .nav-cta { padding: 8px 15px; border-radius: 999px; color: #fff; background: var(--accent); }
+    .nav-cta:hover { color: #fff; background: var(--accent-dark); }
+
+    .hero {
+      overflow: hidden;
+      padding: clamp(72px, 12vw, 145px) 0 90px;
+      background:
+        radial-gradient(circle at 80% 25%, rgba(24, 95, 85, .13), transparent 28%),
+        linear-gradient(180deg, #fff, var(--wash));
+    }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 70px; align-items: center; }
+    .hero h1 { max-width: 760px; margin-bottom: 24px; font-size: clamp(2.35rem, 6vw, 4.7rem); }
+    .hero h1 span { color: var(--accent); }
+    .hero-copy { max-width: 680px; margin-bottom: 32px; color: var(--muted); font-size: clamp(1rem, 2vw, 1.18rem); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .button {
+      display: inline-flex;
+      min-height: 50px;
+      padding: 0 24px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--accent-dark); }
+    .button.secondary { border-color: var(--line); background: #fff; color: var(--ink); }
+    .hero-card { padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.84); box-shadow: var(--shadow); }
+    .hero-card strong { display: block; font-size: clamp(2.1rem, 5vw, 3.3rem); line-height: 1.2; }
+    .hero-card strong span { color: var(--accent); font-size: 1rem; }
+    .hero-card ul { margin: 22px 0 0; padding: 20px 0 0; border-top: 1px solid var(--line); list-style: none; }
+    .hero-card li { position: relative; padding-left: 23px; color: var(--muted); font-size: .93rem; }
+    .hero-card li + li { margin-top: 7px; }
+    .hero-card li::before { position: absolute; left: 0; color: var(--accent); content: "✓"; font-weight: 900; }
+
+    .section { padding: 96px 0; }
+    .section.wash { background: var(--wash); }
+    .section-head { max-width: 720px; margin-bottom: 48px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card { padding: 30px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .card-number { display: grid; width: 42px; height: 42px; margin-bottom: 22px; place-items: center; border-radius: 13px; color: var(--accent); background: var(--accent-soft); font-weight: 900; }
+    .card p { margin-bottom: 0; color: var(--muted); font-size: .95rem; }
+
+    .price-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items: stretch; }
+    .price-card { padding: clamp(30px, 5vw, 52px); border-radius: var(--radius); background: var(--ink); color: #fff; }
+    .price-card .eyebrow { color: #9dd6cc; }
+    .price-card h2 { margin-bottom: 8px; }
+    .price { margin: 24px 0; font-size: clamp(2.8rem, 6vw, 4.7rem); font-weight: 900; line-height: 1; }
+    .price small { font-size: .9rem; font-weight: 500; }
+    .check-list { display: grid; gap: 10px; padding: 0; list-style: none; }
+    .check-list li { position: relative; padding-left: 26px; }
+    .check-list li::before { position: absolute; left: 0; color: #9dd6cc; content: "✓"; font-weight: 900; }
+    .option-card { display: flex; padding: clamp(30px, 5vw, 44px); flex-direction: column; justify-content: space-between; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; }
+    .option-price { color: var(--accent); font-size: 2rem; font-weight: 900; }
+    .out-of-scope { margin-top: 20px; padding: 20px; border-radius: 16px; background: var(--wash); }
+
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: step; }
+    .step { position: relative; padding: 25px 20px; border-top: 3px solid var(--accent); background: var(--wash); counter-increment: step; }
+    .step::before { display: block; margin-bottom: 16px; color: var(--accent); content: "0" counter(step); font-weight: 900; }
+    .step p { margin-bottom: 0; color: var(--muted); font-size: .9rem; }
+
+    details { border-top: 1px solid var(--line); }
+    details:last-child { border-bottom: 1px solid var(--line); }
+    summary { padding: 22px 4px; cursor: pointer; font-weight: 800; }
+    details p { padding: 0 4px 22px; color: var(--muted); }
+
+    .calendar-wrap { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
+    .calendar-wrap iframe { display: block; width: 100%; height: 640px; border: 0; }
+    .contact-box { padding: clamp(32px, 7vw, 66px); border-radius: 28px; background: var(--accent); color: #fff; text-align: center; }
+    .contact-box .eyebrow { color: #c6ebe4; }
+    .contact-box p { max-width: 650px; margin: 0 auto 28px; color: #e0f2ef; }
+    .contact-box .button { border-color: #fff; background: #fff; color: var(--accent-dark); }
+
+    .company { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; }
+    .company dl { margin: 0; }
+    .company-row { display: grid; grid-template-columns: 130px 1fr; padding: 18px 0; border-top: 1px solid var(--line); }
+    .company-row:last-child { border-bottom: 1px solid var(--line); }
+    .company dt { color: var(--muted); font-weight: 700; }
+    .company dd { margin: 0; }
+
+    footer { padding: 42px 0; color: #aeb6c5; background: var(--ink); font-size: .82rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    footer strong { color: #fff; font-size: 1rem; }
+
+    @media (max-width: 820px) {
+      nav a:not(.nav-cta) { display: none; }
+      .hero-grid, .price-layout, .company { grid-template-columns: 1fr; gap: 36px; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .section { padding: 72px 0; }
+      .calendar-wrap iframe { height: 520px; }
+    }
+    @media (max-width: 520px) {
+      .container { width: min(100% - 28px, 1080px); }
+      .brand small { display: none; }
+      .hero { padding-top: 62px; }
+      .steps { grid-template-columns: 1fr; }
+      .company-row { grid-template-columns: 1fr; gap: 4px; }
+      .calendar-wrap iframe { height: 460px; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top">ななめみち・テック <small>｜小さな事業のWeb制作</small></a>
+      <nav aria-label="メインナビゲーション">
+        <a href="#service">サービス</a>
+        <a href="#flow">制作の流れ</a>
+        <a href="#company">事業者情報</a>
+        <a class="nav-cta" href="#contact">相談する</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Small start, solid website.</p>
+          <h1>必要な情報を、<br><span>速く、堅実に。</span></h1>
+          <p class="hero-copy">小規模店舗、個人事業主、ITが苦手な方へ。複雑な機能を持たせず、伝えることに集中した静的Webサイトを、最短当日で公開します。</p>
+          <div class="actions">
+            <a class="button" href="#contact">まずは相談する</a>
+            <a class="button secondary" href="#service">プランを見る</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="基本プラン概要">
+          <p class="eyebrow">Basic plan</p>
+          <strong>50,000円 <span>税込</span></strong>
+          <p class="note">素材が揃っていれば最短当日公開</p>
+          <ul>
+            <li>縦長1ページ・会社概要まで</li>
+            <li>スマートフォン対応</li>
+            <li>公開作業を含む</li>
+            <li>公開後7日以内の軽微な修正1回</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="for-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">For your first step</p>
+          <h2 id="for-heading">まずは、小さく始めたい方へ。</h2>
+          <p class="lead">立派すぎるサイトより、今必要な情報がきちんと伝わること。ななめみち・テックは、その最初の一歩をお手伝いします。</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><div class="card-number">01</div><h3>費用を抑えて公開</h3><p>大規模なシステムや毎月の高額な維持費を前提にせず、必要な内容に絞って制作します。</p></article>
+          <article class="card"><div class="card-number">02</div><h3>保守負担を小さく</h3><p>静的な構成で攻撃対象を抑え、セキュリティリスクと日々のメンテナンス負担を小さくします。</p></article>
+          <article class="card"><div class="card-number">03</div><h3>最短当日に公開</h3><p>文章・写真・会社情報が揃っていれば、相談から確認用ページの制作まで当日対応を目指します。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wash" id="service" aria-labelledby="service-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Service & price</p>
+          <h2 id="service-heading">わかりやすい、ひとつの基本プラン。</h2>
+          <p class="lead">必要以上の機能を勧めず、会社やサービスの基本情報を伝える1ページを制作します。</p>
+        </div>
+        <div class="price-layout">
+          <article class="price-card">
+            <p class="eyebrow">静的Webサイト制作</p>
+            <h2>小さくはじめる<br>Webサイトプラン</h2>
+            <div class="price">50,000円 <small>税込</small></div>
+            <ul class="check-list">
+              <li>トップ・サービス紹介・会社概要を含む縦長1ページ</li>
+              <li>スマートフォン・パソコン表示対応</li>
+              <li>基本的な検索エンジン向け設定</li>
+              <li>支給原稿の誤字修正と簡単な整理</li>
+              <li>GitHub Pagesなどへの公開作業</li>
+              <li>公開後7日以内の軽微な修正1回</li>
+            </ul>
+          </article>
+          <article class="option-card">
+            <div>
+              <p class="eyebrow">Sample option</p>
+              <h2>Googleフォーム<br>設置・設定</h2>
+              <p>Googleアカウントをご用意いただき、問い合わせ項目の設定とサイトへの導線設置を行います。</p>
+              <p class="option-price">＋30,000円 <small>税込</small></p>
+            </div>
+            <div class="out-of-scope">
+              <strong>その他の追加機能</strong>
+              <p class="note">ネットショップ、予約・会員機能、ブログ、頻繁な更新、独自ドメイン設定などは内容に応じてお見積もりします。</p>
+            </div>
+          </article>
+        </div>
+        <p class="note" style="margin-top:18px">※原稿の新規作成、取材、撮影は基本プランに含まれません。必要な文章・写真・事業者情報をご支給ください。</p>
+      </div>
+    </section>
+
+    <section class="section" id="flow" aria-labelledby="flow-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Simple process</p>
+          <h2 id="flow-heading">相談から公開まで、シンプルに。</h2>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>相談・素材共有</h3><p>掲載する文章、写真、会社情報、ご希望をお送りください。</p></article>
+          <article class="step"><h3>確認用ページ制作</h3><p>素材が揃っている場合は、最短当日に制作します。</p></article>
+          <article class="step"><h3>内容確認・お支払い</h3><p>確認用ページをご覧いただき、内容確定後にお支払いください。</p></article>
+          <article class="step"><h3>本番公開</h3><p>入金確認後に公開。7日以内の軽微な修正を1回承ります。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wash" aria-labelledby="faq-heading">
+      <div class="container narrow">
+        <div class="section-head">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-heading">よくあるご質問</h2>
+        </div>
+        <details><summary>本当に当日公開できますか？</summary><p>文章・写真・会社情報などの素材がすべて揃い、確認とお支払いが当日中に完了した場合に限ります。内容や確認状況によっては翌日以降となります。</p></details>
+        <details><summary>文章も考えてもらえますか？</summary><p>新規の原稿作成や取材は基本プランに含まれません。ご支給いただいた文章の誤字修正や、Web掲載に適した簡単な整理は行います。</p></details>
+        <details><summary>公開後に変更できますか？</summary><p>公開後7日以内に、文章・色・画像差し替えなどの軽微な修正を1回無料で承ります。構成変更や機能追加は別途お見積もりします。</p></details>
+        <details><summary>ブログや予約機能も付けられますか？</summary><p>基本プランの対象外です。必要な機能を伺い、対応可否と費用を個別にご案内します。</p></details>
+        <details><summary>毎月の管理費はかかりますか？</summary><p>基本プランに月額管理費はありません。独自ドメインなど、利用する外部サービスの費用はお客さまのご負担となります。継続的な更新や保守が必要な場合は別途ご相談ください。</p></details>
+      </div>
+    </section>
+
+    <section class="section" id="schedule" aria-labelledby="schedule-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Availability</p>
+          <h2 id="schedule-heading">相談できる日時</h2>
+          <p class="lead">カレンダーで空き状況をご確認のうえ、問い合わせフォームから希望日時をお知らせください。</p>
+        </div>
+        <div class="calendar-wrap">
+          <iframe title="相談可能日時カレンダー" loading="lazy" src="https://calendar.google.com/calendar/embed?src=94b7c6ff5c201830ba0870eb7da3f4bfc145d71059408a3bb927b2a082217fc5%40group.calendar.google.com&amp;ctz=Asia%2FTokyo&amp;mode=MONTH"></iframe>
+        </div>
+        <p class="note">※カレンダーが表示されない場合は、公開設定を確認しています。フォームから直接ご希望をお送りいただくこともできます。</p>
+      </div>
+    </section>
+
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-box">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-heading">まずは、やりたいことを<br>聞かせてください。</h2>
+          <p>まだ内容が固まっていなくても大丈夫です。お名前、メールアドレス、希望日時、相談内容をフォームからお送りください。</p>
+          <a class="button" href="https://forms.gle/uLWquKKzDhg6RSso9" target="_blank" rel="noopener noreferrer">問い合わせフォームを開く</a>
+          <p class="note" style="margin-top:18px; margin-bottom:0; color:#d7efeb">送信前に、下記の個人情報の取り扱いをご確認ください。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wash" id="company" aria-labelledby="company-heading">
+      <div class="container company">
+        <div>
+          <p class="eyebrow">About</p>
+          <h2 id="company-heading">事業者情報</h2>
+          <p class="lead">小さな事業に、ちょうどいいWebの道具を。</p>
+        </div>
+        <dl>
+          <div class="company-row"><dt>屋号</dt><dd>ななめみち・テック</dd></div>
+          <div class="company-row"><dt>代表</dt><dd>牛島 祥吾</dd></div>
+          <div class="company-row"><dt>所在地</dt><dd>熊本県熊本市</dd></div>
+          <div class="company-row"><dt>営業時間</dt><dd>不定</dd></div>
+          <div class="company-row"><dt>定休日</dt><dd>不定</dd></div>
+          <div class="company-row"><dt>連絡先</dt><dd><a href="mailto:tolan5gm@gmail.com">tolan5gm@gmail.com</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="privacy" aria-labelledby="privacy-heading">
+      <div class="container narrow">
+        <p class="eyebrow">Privacy</p>
+        <h2 id="privacy-heading">個人情報の取り扱い</h2>
+        <p>ななめみち・テックは、お問い合わせで取得した氏名、メールアドレス、相談内容などの情報を、回答、連絡、サービス提供のために利用します。法令に基づく場合を除き、ご本人の同意なく第三者へ提供しません。お問い合わせフォームにはGoogleフォームを利用しており、送信時にはGoogleのサービスが適用されます。</p>
+        <p>情報の確認・訂正・削除をご希望の場合は、<a href="mailto:tolan5gm@gmail.com">tolan5gm@gmail.com</a> までご連絡ください。</p>
+        <p class="note">制定日：2026年7月22日</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <strong>ななめみち・テック</strong>
+      <span>© 2026 Nanamemichi Tech. All rights reserved.</span>
+    </div>
+  </footer>
+</body>
+</html>
+
         /* カレンダーやフォームの枠組みをスマートに保つコンテナ */
         .iframe-container {
             position: relative;
