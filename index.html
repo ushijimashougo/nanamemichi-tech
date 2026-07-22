@@ -20,6 +20,9 @@
       --accent: #185f55;
       --accent-dark: #10463f;
       --accent-soft: #e7f2ef;
+      --option: #9a4f16;
+      --option-dark: #71370d;
+      --option-soft: #fff4e8;
       --radius: 22px;
       --shadow: 0 18px 55px rgba(23, 32, 51, .08);
     }
@@ -145,6 +148,48 @@
     .contact-box p { max-width: 650px; margin: 0 auto 28px; color: #e0f2ef; }
     .contact-box .button { border-color: #fff; background: #fff; color: var(--accent-dark); }
 
+    .scope-divider {
+      position: relative;
+      z-index: 2;
+      padding: 0 0 46px;
+      background: var(--wash);
+    }
+    .scope-divider-card {
+      display: flex;
+      padding: 26px 30px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      border: 2px solid var(--accent);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .scope-divider-card strong { display: block; color: var(--accent-dark); font-size: 1.25rem; }
+    .scope-divider-card p { margin: 3px 0 0; color: var(--muted); font-size: .92rem; }
+    .scope-price { flex: 0 0 auto; color: var(--accent); font-size: 1.5rem; font-weight: 900; }
+    .option-zone { border-top: 10px solid var(--option); background: var(--option-soft); }
+    .option-intro { padding: 64px 0 0; text-align: center; }
+    .option-label {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--option);
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 900;
+      letter-spacing: .1em;
+    }
+    .option-intro h2 { margin: 18px 0 10px; color: var(--option-dark); }
+    .option-intro p { max-width: 650px; margin-inline: auto; color: #78583e; }
+    .option-zone .eyebrow { color: var(--option); }
+    .option-zone .calendar-wrap { border-color: #e7c7aa; box-shadow: 0 18px 55px rgba(113,55,13,.10); }
+    .option-zone .contact-box { background: var(--option); }
+    .option-zone .contact-box .eyebrow { color: #ffe2c8; }
+    .option-zone .contact-box p { color: #fff1e5; }
+    .option-zone .contact-box .button { color: var(--option-dark); }
+    .option-zone .option-note { color: #78583e; }
+
     .company { display: grid; grid-template-columns: .7fr 1.3fr; gap: 70px; }
     .company dl { margin: 0; }
     .company-row { display: grid; grid-template-columns: 130px 1fr; padding: 18px 0; border-top: 1px solid var(--line); }
@@ -163,6 +208,7 @@
       .steps { grid-template-columns: 1fr 1fr; }
       .section { padding: 72px 0; }
       .calendar-wrap iframe { height: 520px; }
+      .scope-divider-card { align-items: flex-start; flex-direction: column; }
     }
     @media (max-width: 520px) {
       .container { width: min(100% - 28px, 1080px); }
@@ -296,32 +342,6 @@
       </div>
     </section>
 
-    <section class="section" id="schedule" aria-labelledby="schedule-heading">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Availability</p>
-          <h2 id="schedule-heading">相談できる日時</h2>
-          <p class="lead">カレンダーで空き状況をご確認のうえ、問い合わせフォームから希望日時をお知らせください。</p>
-        </div>
-        <div class="calendar-wrap">
-          <iframe title="相談可能日時カレンダー" loading="lazy" src="https://calendar.google.com/calendar/embed?src=94b7c6ff5c201830ba0870eb7da3f4bfc145d71059408a3bb927b2a082217fc5%40group.calendar.google.com&amp;ctz=Asia%2FTokyo&amp;mode=MONTH"></iframe>
-        </div>
-        <p class="note">※カレンダーが表示されない場合は、公開設定を確認しています。フォームから直接ご希望をお送りいただくこともできます。</p>
-      </div>
-    </section>
-
-    <section class="section" id="contact" aria-labelledby="contact-heading">
-      <div class="container">
-        <div class="contact-box">
-          <p class="eyebrow">Contact</p>
-          <h2 id="contact-heading">まずは、やりたいことを<br>聞かせてください。</h2>
-          <p>まだ内容が固まっていなくても大丈夫です。お名前、メールアドレス、希望日時、相談内容をフォームからお送りください。</p>
-          <a class="button" href="https://forms.gle/uLWquKKzDhg6RSso9" target="_blank" rel="noopener noreferrer">問い合わせフォームを開く</a>
-          <p class="note" style="margin-top:18px; margin-bottom:0; color:#d7efeb">送信前に、下記の個人情報の取り扱いをご確認ください。</p>
-        </div>
-      </div>
-    </section>
-
     <section class="section wash" id="company" aria-labelledby="company-heading">
       <div class="container company">
         <div>
@@ -340,15 +360,61 @@
       </div>
     </section>
 
-    <section class="section" id="privacy" aria-labelledby="privacy-heading">
-      <div class="container narrow">
-        <p class="eyebrow">Privacy</p>
-        <h2 id="privacy-heading">個人情報の取り扱い</h2>
-        <p>ななめみち・テックは、お問い合わせで取得した氏名、メールアドレス、相談内容などの情報を、回答、連絡、サービス提供のために利用します。法令に基づく場合を除き、ご本人の同意なく第三者へ提供しません。お問い合わせフォームにはGoogleフォームを利用しており、送信時にはGoogleのサービスが適用されます。</p>
-        <p>情報の確認・訂正・削除をご希望の場合は、<a href="mailto:tolan5gm@gmail.com">tolan5gm@gmail.com</a> までご連絡ください。</p>
-        <p class="note">制定日：2026年7月22日</p>
+    <div class="scope-divider" aria-label="基本プランの範囲">
+      <div class="container">
+        <div class="scope-divider-card">
+          <div>
+            <strong>ここまでが基本プランの制作イメージです</strong>
+            <p>トップ、サービス紹介、料金、制作の流れ、FAQ、会社概要を含む縦長1ページ。</p>
+          </div>
+          <div class="scope-price">50,000円（税込）</div>
+        </div>
       </div>
-    </section>
+    </div>
+
+    <div class="option-zone">
+      <div class="container option-intro">
+        <span class="option-label">ここから追加オプションの実例</span>
+        <h2>問い合わせ・日程確認を追加する場合</h2>
+        <p>下のカレンダーと問い合わせフォームは基本プランには含まれません。Googleアカウントをご用意いただく前提で、設置・設定を承ります。</p>
+      </div>
+
+      <section class="section" id="schedule" aria-labelledby="schedule-heading">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Option example 01</p>
+            <h2 id="schedule-heading">相談できる日時</h2>
+            <p class="lead">カレンダーで空き状況をご確認のうえ、問い合わせフォームから希望日時をお知らせください。</p>
+          </div>
+          <div class="calendar-wrap">
+            <iframe title="相談可能日時カレンダー" loading="lazy" src="https://calendar.google.com/calendar/embed?src=94b7c6ff5c201830ba0870eb7da3f4bfc145d71059408a3bb927b2a082217fc5%40group.calendar.google.com&amp;ctz=Asia%2FTokyo&amp;mode=MONTH"></iframe>
+          </div>
+          <p class="note option-note">※カレンダーが表示されない場合は、公開設定を確認しています。フォームから直接ご希望をお送りいただくこともできます。</p>
+        </div>
+      </section>
+
+      <section class="section" id="contact" aria-labelledby="contact-heading">
+        <div class="container">
+          <div class="contact-box">
+            <p class="eyebrow">Option example 02</p>
+            <h2 id="contact-heading">まずは、やりたいことを<br>聞かせてください。</h2>
+            <p>まだ内容が固まっていなくても大丈夫です。お名前、メールアドレス、希望日時、相談内容をフォームからお送りください。</p>
+            <a class="button" href="https://forms.gle/uLWquKKzDhg6RSso9" target="_blank" rel="noopener noreferrer">問い合わせフォームを開く</a>
+            <p class="note" style="margin-top:18px; margin-bottom:0; color:#fff1e5">送信前に、下記の個人情報の取り扱いをご確認ください。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="privacy" aria-labelledby="privacy-heading">
+        <div class="container narrow">
+          <p class="eyebrow">Privacy</p>
+          <h2 id="privacy-heading">個人情報の取り扱い</h2>
+          <p>ななめみち・テックは、お問い合わせで取得した氏名、メールアドレス、相談内容などの情報を、回答、連絡、サービス提供のために利用します。法令に基づく場合を除き、ご本人の同意なく第三者へ提供しません。お問い合わせフォームにはGoogleフォームを利用しており、送信時にはGoogleのサービスが適用されます。</p>
+          <p>情報の確認・訂正・削除をご希望の場合は、<a href="mailto:tolan5gm@gmail.com">tolan5gm@gmail.com</a> までご連絡ください。</p>
+          <p class="note">制定日：2026年7月22日</p>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
